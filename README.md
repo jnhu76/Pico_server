@@ -22,3 +22,5 @@
 7. https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
 
 8. https://github.com/nsidnev/fastapi-realworld-example-app
+
+9. https://github.com/tiangolo/fastapi/issues/529
