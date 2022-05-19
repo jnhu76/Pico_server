@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+isort --force-single-line-imports core v1 tests
+autoflake --recursive --remove-all-unused-imports --remove-unused-variables --in-place core v1 tests
+black core v1 tests
+isort core v1 tests

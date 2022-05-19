@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+
+flake8 core --exclude=app/db/migrations
+mypy core
+
+black --check core --diff
+isort --check-only core
+
+flake8 tests --exclude=app/db/migrations
+mypy tests
+
+black --check tests --diff
+isort --check-only tests
+
+flake8 v1 --exclude=app/db/migrations
+mypy v1
+
+black --check v1 --diff
+isort --check-only v1
