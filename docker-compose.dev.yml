@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  minio:
+    image: 'bitnami/minio:latest'
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      - MINIO_ROOT_USER=minio-root-user
+      - MINIO_ROOT_PASSWORD=minio-root-password
+  db:
+    image: postgres:11.5-alpine
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data:cached
+  
