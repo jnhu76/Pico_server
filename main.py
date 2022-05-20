@@ -3,6 +3,8 @@ from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
 
+from tortoise.contrib.fastapi import register_tortoise
+
 from core.config import get_app_settings
 from core.errors.http_error import http_error_handler
 from core.errors.validation_error import http422_error_handler
@@ -32,6 +34,16 @@ def get_application() -> FastAPI:
     application.add_exception_handler(RequestValidationError, http422_error_handler)
 
     application.include_router(v1_router, prefix=settings.v1_prefix)
+
+    # register tortoise-orm
+    register_tortoise(
+        application,
+        db_url="sqlite://test.sqlite3",
+        # db_url=settings.database_url,
+        modules={"models": ["core.models.images"]},
+        generate_schemas=True,
+        add_exception_handlers=True,
+    )
 
     return application
 
