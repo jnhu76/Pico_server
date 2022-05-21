@@ -38,8 +38,8 @@ def get_application() -> FastAPI:
     # register tortoise-orm
     register_tortoise(
         application,
-        db_url="sqlite://test.sqlite3",
-        # db_url=settings.database_url,
+        # db_url="sqlite://test.sqlite3",
+        db_url=settings.database_url,
         modules={"models": ["core.models.images"]},
         generate_schemas=True,
         add_exception_handlers=True,

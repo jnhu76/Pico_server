@@ -107,6 +107,8 @@ venv.bak/
 .vscode/
 
 # Project
-postgres-data
+local_pgdata
+local_minio
+pgadmin-data
 test.sqlite
 test.sqlite*

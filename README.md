@@ -5,6 +5,35 @@
 
 项目结构参考 [What are the best practices for structuring a FastAPI project?](https://stackoverflow.com/a/64987404)
 
+minio 返回信息：
+
+```sh
+{
+  "filename": "IMG_0006.JPG",
+  "ret": {
+    "_bucket_name": "pico",
+    "_object_name": "IMG_0006.JPG",
+    "_version_id": null,
+    "_etag": "a09b2771acb3f2eee01f6ff0204668f0",
+    "_http_headers": {
+      "Accept-Ranges": "bytes",
+      "Content-Length": "0",
+      "Content-Security-Policy": "block-all-mixed-content",
+      "ETag": "\"a09b2771acb3f2eee01f6ff0204668f0\"",
+      "Server": "MinIO",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Vary": "Origin, Accept-Encoding",
+      "X-Amz-Request-Id": "16F11CE02AAD7DCB",
+      "X-Content-Type-Options": "nosniff",
+      "X-Xss-Protection": "1; mode=block",
+      "Date": "Sat, 21 May 2022 11:58:07 GMT"
+    },
+    "_last_modified": null,
+    "_location": null
+  }
+}
+```
+
 ### 参考文档
 
 1. https://www.toptal.com/python/build-high-performing-apps-with-the-python-fastapi-framework

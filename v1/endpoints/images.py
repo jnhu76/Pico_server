@@ -7,6 +7,7 @@ from starlette.status import HTTP_400_BAD_REQUEST
 
 from core.models.images import Images
 from core.schemas.images import Image_Pydantic, ImageIn_Pydantic
+from core.services.storage.minio import upload_file
 
 
 router = APIRouter()
@@ -24,4 +25,5 @@ async def get_image_stream(checksum: str):
 
 @router.post("/file", name="image:upload-image")
 async def create_image(file: UploadFile):
-    return {"filename": file.filename}
+    ret = await upload_file(file.filename, file.file.fileno(), file.content_type)
+    return {"filename": file.filename, "ret": ret}

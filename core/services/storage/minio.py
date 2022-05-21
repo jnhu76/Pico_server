@@ -2,23 +2,25 @@ from typing import IO, Dict, List
 from minio import Minio
 from minio.error import InvalidResponseError
 
-from core.settings.app import AppSettings
+from core.config import get_app_settings
 
 
-bucket = AppSettings.minio_bucket
+settings = get_app_settings()
+bucket = settings.minio_bucket
 
 # create minio client
-def get_minio_client(settings: AppSettings) -> Minio:
+def get_minio_client() -> Minio:
     minio = Minio(
         settings.minio_endpoint,
         access_key=settings.minio_access_key,
         secret_key=settings.minio_secret_key,
+        secure=False,
     )
     return minio
 
 
 # upload file
-def upload_file(object_name: str, file_path: str, content_type: str, metadata: Dict = {}) -> str:
+async def upload_file(object_name: str, file_path: str, content_type: str, metadata: Dict = {}) -> str:
     minio: Minio = get_minio_client()
 
     try:
@@ -35,7 +37,7 @@ def upload_file(object_name: str, file_path: str, content_type: str, metadata: D
     return ret
 
 # getfile
-def get_file(object_name: str, file_path: str, request_headers: Dict = {}) -> Dict:
+async def get_file(object_name: str, file_path: str, request_headers: Dict = {}) -> Dict:
     minio: Minio = get_minio_client()
 
     try:
@@ -52,7 +54,7 @@ def get_file(object_name: str, file_path: str, request_headers: Dict = {}) -> Di
 
 
 # delete file
-def delete_file(object_name: str) -> None:
+async def delete_file(object_name: str) -> None:
     minio: Minio = get_minio_client()
 
     try:
@@ -63,7 +65,7 @@ def delete_file(object_name: str) -> None:
 
 
 # delete files
-def delete_files(objects_to_delete : List) -> None:
+async  def delete_files(objects_to_delete : List) -> None:
     minio: Minio = get_minio_client()
 
     try:
