@@ -1,5 +1,6 @@
 from tortoise import fields, models
 
+
 class Images(models.Model):
     """
     The Image model
@@ -21,4 +22,4 @@ class Images(models.Model):
         table_description = "image models."
 
     class PydanticMeta:
-        exclude = ('created_at', 'is_deleted', 'deleted_at')
+        exclude = ("created_at", "is_deleted", "deleted_at")

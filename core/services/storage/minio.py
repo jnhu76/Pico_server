@@ -1,9 +1,9 @@
-from typing import IO, Dict, List
+from typing import Dict, List
+
 from minio import Minio
 from minio.error import InvalidResponseError
 
 from core.config import get_app_settings
-
 
 settings = get_app_settings()
 bucket = settings.minio_bucket
@@ -20,7 +20,9 @@ def get_minio_client() -> Minio:
 
 
 # upload file
-async def upload_file(object_name: str, file_path: str, content_type: str, metadata: Dict = {}) -> str:
+async def upload_file(
+    object_name: str, file_path: str, content_type: str, metadata: Dict = {}
+) -> str:
     minio: Minio = get_minio_client()
 
     try:
@@ -29,15 +31,18 @@ async def upload_file(object_name: str, file_path: str, content_type: str, metad
             object_name=object_name,
             file_path=file_path,
             content_type=content_type,
-            metadata=metadata
+            metadata=metadata,
         )
     except InvalidResponseError as err:
         # todo: add log
         print(err)
     return ret
 
+
 # getfile
-async def get_file(object_name: str, file_path: str, request_headers: Dict = {}) -> Dict:
+async def get_file(
+    object_name: str, file_path: str, request_headers: Dict = {}
+) -> Dict:
     minio: Minio = get_minio_client()
 
     try:
@@ -45,7 +50,7 @@ async def get_file(object_name: str, file_path: str, request_headers: Dict = {})
             bucket_name=bucket,
             object_name=object_name,
             file_path=file_path,
-            request_headers=request_headers
+            request_headers=request_headers,
         )
     except InvalidResponseError as err:
         # todo: add log
@@ -65,7 +70,7 @@ async def delete_file(object_name: str) -> None:
 
 
 # delete files
-async  def delete_files(objects_to_delete : List) -> None:
+async def delete_files(objects_to_delete: List) -> None:
     minio: Minio = get_minio_client()
 
     try:
@@ -75,4 +80,3 @@ async  def delete_files(objects_to_delete : List) -> None:
     except InvalidResponseError as err:
         # todo: add log
         print(err)
-
