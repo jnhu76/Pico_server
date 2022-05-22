@@ -19,10 +19,26 @@ def get_minio_client() -> Minio:
     return minio
 
 
+def create_bucket() -> bool:
+    minio: Minio = get_minio_client()
+
+    if minio.bucket_exists(bucket):
+        return False
+    minio.make_bucket(bucket)
+
+
+def remote_bucket() -> bool:
+    minio: Minio = get_minio_client()
+
+    # todo: remove all files.
+
+    minio.remote_bucket(bucket)
+
+
 # upload file
-async def upload_file(
+def upload_file(
     object_name: str, file_path: str, content_type: str, metadata: Dict = {}
-) -> str:
+):
     minio: Minio = get_minio_client()
 
     try:
@@ -40,26 +56,24 @@ async def upload_file(
 
 
 # getfile
-async def get_file(
-    object_name: str, file_path: str, request_headers: Dict = {}
-) -> Dict:
+def get_file(object_name: str):
     minio: Minio = get_minio_client()
 
     try:
-        ret = minio.fget_object(
+        ret = minio.get_object(
             bucket_name=bucket,
             object_name=object_name,
-            file_path=file_path,
-            request_headers=request_headers,
         )
     except InvalidResponseError as err:
         # todo: add log
         print(err)
+        ret.close()
+        ret.release_conn()
     return ret
 
 
 # delete file
-async def delete_file(object_name: str) -> None:
+def delete_file(object_name: str) -> None:
     minio: Minio = get_minio_client()
 
     try:
@@ -70,7 +84,7 @@ async def delete_file(object_name: str) -> None:
 
 
 # delete files
-async def delete_files(objects_to_delete: List) -> None:
+def delete_files(objects_to_delete: List) -> None:
     minio: Minio = get_minio_client()
 
     try:
