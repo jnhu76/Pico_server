@@ -8,6 +8,7 @@ from tortoise.contrib.fastapi import register_tortoise
 from core.config import get_app_settings
 from core.errors.http_error import http_error_handler
 from core.errors.validation_error import http422_error_handler
+from core.events import create_start_app_handler
 
 from v1.api import router as v1_router
 
@@ -29,6 +30,10 @@ def get_application() -> FastAPI:
     )
 
     # todo: add application.add_event_handler
+    application.add_event_handler(
+        "startup",
+        create_start_app_handler(),
+    )
 
     application.add_exception_handler(HTTPException, http_error_handler)
     application.add_exception_handler(RequestValidationError, http422_error_handler)
