@@ -1,6 +1,5 @@
 # Pico_server
 
-
 ## 项目文档
 
 ### V1-API
@@ -43,8 +42,25 @@
 
    Upload Image file.
 
+## todo
 
-### 参考文档
+1. 设计cache
+
+2. 利用gRPC优化api
+
+3. 添加图片 tag
+
+## 继续阅读
+
+1. Facebook Heystack 设计
+
+   https://www.scaleyourapp.com/facebook-photo-storage-architecture/
+
+   paper：Finding a needle in Haystack: Facebook’s photo storage
+
+   视频： https://www.coursera.org/lecture/cloud-sys-software/facebook-haystack-based-design-Zay9r
+
+## 参考文档
 
 1. https://www.toptal.com/python/build-high-performing-apps-with-the-python-fastapi-framework
 
