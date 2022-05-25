@@ -60,6 +60,17 @@
 
    视频： https://www.coursera.org/lecture/cloud-sys-software/facebook-haystack-based-design-Zay9r
 
+2. f4: Facebook’s Warm BLOB Storage System
+
+3. [Imgix](https://imgix.com/) - Powerful Image
+Processing, Simple APIs
+
+   - API https://docs.imgix.com/apis/management
+
+   - Library https://docs.imgix.com/libraries
+
+   - Best-practices https://docs.imgix.com/best-practices
+
 ## 参考文档
 
 1. https://www.toptal.com/python/build-high-performing-apps-with-the-python-fastapi-framework
