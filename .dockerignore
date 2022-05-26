@@ -3,6 +3,8 @@ __pycache__
 *.pyo
 *.pyd
 .Python
+.venv
+.pytest_cache
 .env*
 pip-log.txt
 pip-delete-this-directory.txt

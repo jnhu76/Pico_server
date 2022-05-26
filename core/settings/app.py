@@ -33,10 +33,10 @@ class AppSettings(BaseAppSettings):
     jwt_token_prefix: str = "Token"
 
     # minio settings
-    minio_endpoint: str
-    minio_access_key: str
-    minio_secret_key: str
-    minio_bucket: str
+    MINIO_ENDPOINT: str
+    MINIO_ACCESS_KEY: str
+    MINIO_SECRET_KEY: str
+    MINIO_BUCKET: str
 
     allowed_hosts: List[str] = ["*"]
 

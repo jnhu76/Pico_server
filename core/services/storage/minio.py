@@ -6,14 +6,14 @@ from minio.error import InvalidResponseError
 from core.config import get_app_settings
 
 settings = get_app_settings()
-bucket = settings.minio_bucket
+bucket = settings.MINIO_BUCKET
 
 # create minio client
 def get_minio_client() -> Minio:
     minio = Minio(
-        settings.minio_endpoint,
-        access_key=settings.minio_access_key,
-        secret_key=settings.minio_secret_key,
+        settings.MINIO_ENDPOINT,
+        access_key=settings.MINIO_ACCESS_KEY,
+        secret_key=settings.MINIO_SECRET_KEY,
         secure=False,
     )
     return minio

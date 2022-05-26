@@ -7,12 +7,16 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "postgresql://postgres:postgres@db/postgres"
+      DATABASE_URL: "postgres://user:admin@db/postgres"
+      MINIO_ENDPOINT: "minio:9000"
+      MINIO_ACCESS_KEY: "minio_user"
+      MINIO_SECRET_KEY: "minio_password"
+      MINIO_BUCKET: "pico"
     env_file:
       - .env
     depends_on:
       - db
-    network_mode: "host"
+      - minio
   minio:
     image: 'bitnami/minio:latest'
     container_name: minio
@@ -22,7 +26,6 @@ services:
     environment:
       - MINIO_ROOT_USER=minio_user
       - MINIO_ROOT_PASSWORD=minio_password
-    network_mode: "host"
   db:
     image: postgres:11.5-alpine
     container_name: postgresql
@@ -32,4 +35,3 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: admin
       PGDATA: /var/lib/postgresql/data
-    network_mode: "host"
