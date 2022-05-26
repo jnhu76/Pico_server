@@ -84,3 +84,5 @@ Processing, Simple APIs
 8. https://github.com/nsidnev/fastapi-realworld-example-app
 
 9. https://stackoverflow.com/questions/65716897/testing-in-fastapi-using-tortoise-orm
+
+10. https://segmentfault.com/a/1190000041855999
