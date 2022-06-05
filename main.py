@@ -45,7 +45,11 @@ def get_application() -> FastAPI:
         application,
         # db_url="sqlite://test.sqlite3",
         db_url=settings.database_url,
-        modules={"models": ["core.models.images"]},
+        modules={"models": [
+            "core.models.images",
+            "core.models.albums",
+            "core.models.users",
+        ]},
         generate_schemas=True,
         add_exception_handlers=True,
     )

@@ -12,8 +12,9 @@ class Images(models.Model):
     checksum = fields.CharField(max_length=255, index=True, unique=True)
     content_type = fields.CharField(max_length=255)
     metadata = fields.JSONField()
-    created_at = fields.DatetimeField(auto_now_add=True)
+    album = fields.ForeignKeyField("models.albums", related_name="album")
     is_deleted = fields.BooleanField(default=False)
+    created_at = fields.DatetimeField(auto_now_add=True)
     deleted_at = fields.DatetimeField(auto_now=True)
 
     class Meta:
