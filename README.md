@@ -71,6 +71,10 @@ Processing, Simple APIs
 
    - Best-practices https://docs.imgix.com/best-practices
 
+4. 小文件存储
+
+   Kangaroo: Caching Billions of Tiny Objects on Flash
+
 ## 参考文档
 
 1. https://www.toptal.com/python/build-high-performing-apps-with-the-python-fastapi-framework
