@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Writex文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Writex 部署文档">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/assets/npm/vue.css">
+</head>
+<body>
+  <div id="app">加载中...</div>
+  <script>
+    window.$docsify = {
+      name: 'PICO',
+      repo: 'https://github.com/jnhu76/Pico_server.git',
+      auto2top: true,
+      executeScript: true,
+      coverpage: true,
+      loadNavbar: true,
+      loadSidebar: true,
+      mergeNavbar: true,
+      mergeNavbar: true,
+      notFoundPage: true,
+      maxLevel: 6,
+      subMaxLevel: 3,
+      onlyCover: false,
+      pagination: {
+        previousText: '上一章节',
+        nextText: '下一章节',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+      formatUpdated: '{MM}/{DD} {HH}:{mm}',
+      markdown: {
+        renderer: {
+          	image: function(href, title) {
+            	return `<img src="${href}"/>`
+          	}
+        }
+      },
+      alias: {
+        '/home': '/README',
+      },
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: {
+          '/': '搜索',
+        },
+        noData: {
+          '/': '找不到结果',
+        },
+        depth: 6,
+        namespace: 'pico.cc',
+        hideOtherSidebarContent: false
+      },
+      scrollToTop: {
+        auto: true,
+        text: 'Top',
+        right: 15,
+        bottom: 15,
+        offset: 500
+      },
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="/assets/npm/docsify@4.min.js"></script>
+  <script src="/assets/npm/emoji.min.js"></script>
+  <script src="/assets/npm/search.min.js"></script>
+  <script src="/assets/npm/zoom-image.min.js"></script>
+  <script src="/assets/npm/docsify-copy-code.min.js"></script>
+  <script src="/assets/npm/docsify-pagination.min.js"></script>
+  <script src="/assets/npm/docsify-scroll-to-top.min.js"></script>
+
+  <!-- 代码高亮 yaml -->
+  <!-- more language https://prismjs.com/#supported-languages -->
+  <script src="/assets/npm/prism-yaml.min.js"></script>
+  <script src="/assets/npm/prism-bash.min.js"></script>
+  <script src="/assets/npm/prism-latex.min.js"></script>
+  <script src="/assets/npm/prism-markdown.min.js"></script>
+  <script src="/assets/npm/prism-markup.min.js"></script>
+</body>
+</html>
